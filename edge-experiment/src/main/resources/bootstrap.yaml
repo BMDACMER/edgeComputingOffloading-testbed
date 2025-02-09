@@ -1,0 +1,29 @@
+spring:
+    application:
+        name: edge-experiment
+    profiles:
+        active: edge-computing,mappo
+#        active: edge-computing,dgail
+#        active: edge-computing,milp
+#        active: edge-computing,qwen
+#        active: edge-computing,masac
+#        active: edge-computing,reliability-two-choice
+#        active: edge-computing,reactive
+#        active: edge-computing,random
+#        active: edge-computing,esf
+#        active: edge-computing,two-choice
+#        active: edge-computing,local
+    cloud:
+        nacos:
+            discovery:
+                server-addr: 222.201.187.51:8848
+                watch-delay: 3000
+                namespace: 21b06d16-48c2-4ab2-ac53-64bad89ce268
+            config:
+                server-addr: 222.201.187.51:8848
+                prefix: application
+                file-extension: yaml
+                namespace: 21b06d16-48c2-4ab2-ac53-64bad89ce268
+                group: DEFAULT_GROUP
+server:
+    port: 9101

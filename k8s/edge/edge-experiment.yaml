@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    namespace: edge-computing
+    name: edge-experiment
+    labels:
+        app: edge-experiment
+spec:
+    containers:
+        -   name: edge-experiment
+            image: edge-experiment:v2.0
+            imagePullPolicy: IfNotPresent
+            volumeMounts:
+                -   mountPath: /root/results
+                    name: data
+            resources: { } 
+    volumes:
+        -   name: data
+            nfs:
+                path: /home/guohao/data/ec-data/results
+                server: 222.201.187.52
+    restartPolicy: Always

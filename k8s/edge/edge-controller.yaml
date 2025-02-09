@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    namespace: edge-computing
+    name: edge-controller
+    labels:
+        app: edge-controller
+spec:
+    containers:
+        -   name: edge-controller
+            image: edge-controller:v2.0
+            imagePullPolicy: IfNotPresent
+            volumeMounts:
+                -   mountPath: /root/results
+                    name: data
+            # resources: {}
+            resources:
+                limits: 
+                    cpu: "16"
+                    memory: "3Gi" 
+                requests: 
+                    cpu: "4"
+                    memory: "0.5Gi"
+    volumes:
+        -   name: data
+            nfs:
+                path: /home/guohao/data/ec-data/results
+                server: 222.201.187.52
+    restartPolicy: Always
